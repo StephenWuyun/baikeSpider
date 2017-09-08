@@ -16,17 +16,20 @@ class SpiderMan(object):
          count = 1
          self.urls.add_new_url(root_url)
          while self.urls.has_new_url():
-             print 'craw %d item'%count
-             new_url = self.urls.get_new_url()
-             html_cont = self.downloader.download(new_url)
-             new_urls, new_data = self.parser.parse(new_url, html_cont)
-             self.urls.add_new_urls(new_urls)
-             self.outputer.collect_data(new_data)
+             try:
+                 print 'craw %d item'%count
+                 new_url = self.urls.get_new_url()
+                 html_cont = self.downloader.download(new_url)
+                 new_urls, new_data = self.parser.parse(new_url, html_cont)
+                 self.urls.add_new_urls(new_urls)
+                 self.outputer.collect_data(new_data)
 
-             if count == 10:
-                 break
+                 if count == 100:
+                     break
 
-             count += 1
+                 count += 1
+             except:
+                print 'craw error'
 
          self.outputer.output_html()
 

@@ -7,13 +7,14 @@ import re
 class HtmlParser(object):
     @staticmethod
     def _get_new_urls(page_url, soup):
-        new_urls = set()
+        new_urls = list()
         #/item/史记·2016?fr=navbar
         links = soup.find_all('a', href=re.compile("/item/."))
         for link in links:
             new_url = link['href']
             new_full_url = urlparse.urljoin(page_url, new_url)
-            new_urls.add(new_full_url)
+            if new_full_url not in new_urls:
+                new_urls.append(new_full_url)
 
         return new_urls
 
