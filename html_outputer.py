@@ -1,6 +1,7 @@
 class HtmlOutPuter(object):
     def __init__(self):
         self.datas = []
+
     def collect_data(self, data):
         if data is None:
             return
@@ -25,7 +26,6 @@ class HtmlOutPuter(object):
         fout.write('</body>')
         fout.write('</html>')
 
-
     def output_html(self):
         fout = open('output.html', 'w')
         fout.write('<html>')
@@ -34,8 +34,7 @@ class HtmlOutPuter(object):
         for data in self.datas:
             fout.write('<p>')
             fout.write('<h2> %s</h2>' %data['title'].encode('utf-8'))
-            #fout.write('url:%s\n' %data['url'].encode('utf-8'))
-            fout.write('%s\n' %data['summary'].encode('utf-8'))
+            fout.write('%s' %data['summary'].encode('utf-8'))
             fout.write('</p>')
 
         fout.write('</body>')

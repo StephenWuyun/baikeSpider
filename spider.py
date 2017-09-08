@@ -30,8 +30,6 @@ class SpiderMan(object):
 
          self.outputer.output_html()
 
-
-
 if __name__ == "__main__":
     spider = SpiderMan()
     spider.craw("https://baike.baidu.com/item/%E5%91%A8%E6%98%9F%E9%A9%B0")

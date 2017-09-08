@@ -2,7 +2,7 @@ import urllib2
 
 class HtmlDownloader(object):
     @staticmethod
-    def download(self, url):
+    def download(url):
         if url is None:
             return None
 
